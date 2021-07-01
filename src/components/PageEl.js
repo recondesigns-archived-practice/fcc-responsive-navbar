@@ -7,7 +7,7 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 2px solid dodgerblue; */
+  /* border: 2px solid green; */
 `;
 
 const Title = styled.h1`
