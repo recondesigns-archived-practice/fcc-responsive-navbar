@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "./components/Header";
+import PageEl from "./components/PageEl";
 
-const AppContainer = styled.div`
-  & > h1 {
-    margin: 0px;
-    text-align: center;
-  }
+const Container = styled.div`
+  height: 100vh;
+  border: 2px solid lightcoral;
 `;
+
 export default function App() {
   return (
-    <div className="App">
-      <AppContainer>
-        <h1>{"App Component"}</h1>
-      </AppContainer>
-    </div>
+    <Container>
+      <Header />
+      <PageEl />
+    </Container>
   );
 }
