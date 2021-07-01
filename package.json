@@ -1,5 +1,5 @@
 {
-  "name": "sidebar",
+  "name": "add-routing",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -7,6 +7,7 @@
   "dependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-router-dom": "5.2.0",
     "react-scripts": "4.0.0",
     "styled-components": "5.2.1"
   },
