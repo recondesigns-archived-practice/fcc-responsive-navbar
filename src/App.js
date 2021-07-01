@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import SideNav from "./components/SideNav";
-import PageEl from "./components/PageEl";
+import HomePage from "./pages/Home";
+import ContactPage from "./pages/Contact";
+import AboutPage from "./pages/About";
+import ProjectsPage from "./pages/Projects";
 
 const Container = styled.div`
   position: relative;
   height: 100vh;
-  /* border: 2px solid lightcoral; */
 `;
 
 export default function App() {
@@ -15,7 +18,12 @@ export default function App() {
     <Container>
       <Header />
       <SideNav />
-      <PageEl />
+      <Switch>
+        <Route exact path={"/"} component={HomePage} />
+        <Route path={"/about"} component={AboutPage} />
+        <Route path={"/projects"} component={ProjectsPage} />
+        <Route path={"/contact"} component={ContactPage} />
+      </Switch>
     </Container>
   );
 }

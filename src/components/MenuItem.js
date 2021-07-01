@@ -13,7 +13,6 @@ const Label = styled.p`
   letter-spacing: 0.4px;
   color: #414141;
   opacity: 0.6;
-  /* border: 1px dashed green; */
 
   &:hover {
     font-weight: 600;
@@ -22,9 +21,9 @@ const Label = styled.p`
 `;
 
 export default function MenuItem(props) {
-  const { label } = props;
+  const { label, onclick } = props;
   return (
-    <Container>
+    <Container onClick={onclick}>
       <Label>{label}</Label>
     </Container>
   );

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 import { AppContext } from "../contexts/AppProvider";
 import logoImg from "../assets/rando-logo.svg";
 import menuIcon from "../assets/menu-icon.svg";
@@ -15,25 +16,21 @@ const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid black; */
 
   @media (min-width: 800px) {
     padding-left: 40px;
     padding-right: 40px;
-    /* padding: 0px 40px 0px 40px; */
   }
 `;
 
 const LogoImage = styled.img`
   width: 148px;
   height: 28px;
-  /* border: 1px dashed green; */
 `;
 
 const MenuIcon = styled.img`
   width: 20px;
   height: 20px;
-  /* border: 1px dashed green; */
 
   @media (min-width: 800px) {
     display: none;
@@ -46,7 +43,6 @@ const LinksWrapper = styled.div`
   width: 400px;
   display: none;
   justify-content: space-between;
-  /* border: 1px solid dodgerblue; */
 
   @media (min-width: 800px) {
     display: flex;
@@ -63,17 +59,14 @@ const Link = styled.p`
   color: #49a6e9;
   opacity: 0.6;
   cursor: pointer;
-  /* border: 1px dashed green; */
 
   &:hover {
-    /* font-weight: 400; */
     opacity: 1;
   }
 `;
 
 const SocialWrapper = styled.div`
   display: none;
-  /* border: 1px solid dodgerblue; */
 
   @media (min-width: 800px) {
     display: flex;
@@ -86,7 +79,6 @@ const SocialIcon = styled.img`
   width: 24px;
   height: 24px;
   opacity: 0.6;
-  /* border: 1px dashed green; */
 
   &:hover {
     opacity: 1;
@@ -95,6 +87,7 @@ const SocialIcon = styled.img`
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useContext(AppContext);
+  let history = useHistory();
 
   function openMenu(state, setter) {
     if (state === false) {
@@ -104,14 +97,22 @@ export default function Header() {
     }
   }
 
+  function handleClick(func, path) {
+    func.push(path);
+  }
+
   return (
     <Container>
       <LogoImage src={logoImg} alt={"logo image"} />
       <LinksWrapper>
-        <Link>{"Home"}</Link>
-        <Link>{"About"}</Link>
-        <Link>{"Projects"}</Link>
-        <Link>{"Contact"}</Link>
+        <Link onClick={() => handleClick(history, "/")}>{"Home"}</Link>
+        <Link onClick={() => handleClick(history, "/about")}>{"About"}</Link>
+        <Link onClick={() => handleClick(history, "/projects")}>
+          {"Projects"}
+        </Link>
+        <Link onClick={() => handleClick(history, "/contact")}>
+          {"Contact"}
+        </Link>
       </LinksWrapper>
       <SocialWrapper>
         <SocialIcon src={linkedInIcon} alt={"View my LinkedIn profile"} />
