@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { AppContext } from "../contexts/AppProvider";
 import logoImg from "../assets/rando-logo.svg";
 import menuIcon from "../assets/menu-icon.svg";
 
@@ -25,10 +26,24 @@ const MenuIcon = styled.img`
 `;
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useContext(AppContext);
+
+  function openMenu(state, setter) {
+    if (state === false) {
+      setter(() => true);
+    } else if (state === true) {
+      setter(() => false);
+    }
+  }
+
   return (
     <Container>
       <LogoImage src={logoImg} alt={"logo image"} />
-      <MenuIcon src={menuIcon} alt={"open menu"} />
+      <MenuIcon
+        src={menuIcon}
+        alt={"open menu"}
+        onClick={() => openMenu(isMenuOpen, setIsMenuOpen)}
+      />
     </Container>
   );
 }
